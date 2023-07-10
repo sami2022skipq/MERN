@@ -1,8 +1,7 @@
-const productModels = require('../models/productModels')
 const Product = require('../models/productModels')
 
 
-// Create a new Product   -- Admin
+// Create a new Product   -- admin
 exports.createProduct = async (req, res, next) => {
 
      const product = await Product.create(req.body)
@@ -45,7 +44,7 @@ exports.getAllProducts = async (req, res) => {
 
      })
 }
-// Delete a product  -- Admi
+// Delete a product  -- Admin
 
 exports.deleteProduct = async (req, res, next) => {
      const product = await Product.findById(req.params.id)
@@ -62,5 +61,21 @@ exports.deleteProduct = async (req, res, next) => {
           message: `Product  with the Id :${req.params.id} has been deleted `
      })
 }
+// Get product  detail  -- Admin
 
-//  module.exports =   {deleteProduct}
+exports.getProductDetail = async (req, res, next) => {
+     const product = await Product.findById(req.params.id)
+     if (!product) {
+          res.status(500).json({
+               success: false,
+               message: "Product not found "
+          })
+     }
+     
+
+     res.status(200).json({
+          success: true,
+          product
+     })
+}
+

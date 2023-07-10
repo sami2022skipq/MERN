@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
-const mongoURI ="mongodb://127.0.0.1:27017/Ecommerce"
 
 const connectToMonggo =()=>{
     // 
-    mongoose.connect(mongoURI)
+    mongoose.connect(process.env.mongoURI)
     .then((data) => {
             console.log(`Connected to MongoDB at ${data.connection.host}` );
         },

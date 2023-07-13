@@ -16,7 +16,7 @@ exports.registerUser = catchAsyncErrors( async(req, res, next)=>{
     })
 })
 exports.getUsers =catchAsyncErrors(async(req, res, next)=>{
-    const users = await User.find({role :'admin'});
+    const users = await User.find();
     res.status(200).json({
         success:true,
         users
